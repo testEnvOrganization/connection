@@ -13,7 +13,7 @@ before_install:
 #  - ssh-add ~/.ssh/github_deploy_key
 #  - ls ~/.ssh/
 #  - cat ~/.ssh/config
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/known_hosts
 #  - cat ~/.ssh/config
 #  - git config --global user.email "hirofumi-yoshida@science.co.jp"
 #  - git config --global user.name "hs-yoshida"

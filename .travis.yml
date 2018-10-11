@@ -13,8 +13,11 @@ before_install:
 #  - ssh-add ~/.ssh/github_deploy_key
 #  - ls ~/.ssh/
 #  - cat ~/.ssh/config
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/known_hosts
-#  - cat ~/.ssh/config
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+#  - pbcopy < ~/.ssh/github_deploy_key
+  - echo -e ~/.ssh/github_deploy_key >> ~/.ssh/known_hosts
+  - cat ~/.ssh/config
+  - cat ~/.ssh/known_hosts
 #  - git config --global user.email "hirofumi-yoshida@science.co.jp"
 #  - git config --global user.name "hs-yoshida"
   - git clone git@github.com:testEnvOrganization/connection.git --recursive --depth=1

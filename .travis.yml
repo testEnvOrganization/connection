@@ -10,10 +10,12 @@ before_install:
   - mv github_deploy_key ~/.ssh/
   - chmod 600 ~/.ssh/github_deploy_key
   - eval $(ssh-agent -s)
-#  - ssh -o 'StrictHostKeyChecking no' github.com
 #  - ssh-keygen -R github.com
-#  - ssh-add ~/.ssh/github_deploy_key
+  - ssh-add ~/.ssh/github_deploy_key
   - ls -la ~/.ssh/
+  - chmod 600 ~/.ssh/config
+  - ls -la ~/.ssh/
+  - ssh github.com 
 #  - cat ~/.ssh/config
 #  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 #  - pbcopy < ~/.ssh/github_deploy_key
@@ -24,10 +26,10 @@ before_install:
 #  - git clone git@github.com:testEnvOrganization/connection.git --recursive --depth=1
 #  - git branch -a
 #  - git checkout origin/develop
-  - git fetch git@github.com:testEnvOrganization/connection.git
-  - yes
-  - git checkout develop
-  - git branch -a
+#  - git fetch git@github.com:testEnvOrganization/connection.git
+#  - yes
+#  - git checkout develop
+#  - git branch -a
 install:
   - wget $URL/redpen-1.10.1.tar.gz
   - tar xvf redpen-1.10.1.tar.gz

@@ -24,6 +24,7 @@ before_install:
 #  - git branch -a
 #  - git checkout origin/develop
   - git fetch git@github.com:testEnvOrganization/connection.git
+  - yes
   - git checkout develop
   - git branch -a
 install:

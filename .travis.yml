@@ -5,13 +5,13 @@ jdk:
 - oraclejdk8
 env:
   - URL=https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.1
-before_install:
+before_script:
   - openssl aes-256-cbc -K $encrypted_b291a2cbdf5e_key -iv $encrypted_b291a2cbdf5e_iv -in github_deploy_key.enc -out id_rsa -md md5
   - mv id_rsa ~/.ssh/
   - eval $(ssh-agent -s)
   - ssh-keygen -R github.com
   - ls -la ~/.ssh/
-  - echo -e "Host github.com,192.30.253.113\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config 
   - chmod 600 ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/config
   - ls -la ~/.ssh/

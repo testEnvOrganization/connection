@@ -10,18 +10,19 @@ before_install:
   - mv github_deploy_key ~/.ssh/
   - chmod 600 ~/.ssh/github_deploy_key
   - eval $(ssh-agent -s)
-  - ssh-add ~/.ssh/github_deploy_key
-#  - ls ~/.ssh/
+  - ssh-keygen -R github.com
+#  - ssh-add ~/.ssh/github_deploy_key
+  - ls -la ~/.ssh/
 #  - cat ~/.ssh/config
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+#  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 #  - pbcopy < ~/.ssh/github_deploy_key
-  - cat ~/.ssh/config
-  - cat ~/.ssh/known_hosts
+#  - cat ~/.ssh/config
+#  - cat ~/.ssh/known_hosts
 #  - git config --global user.email "hirofumi-yoshida@science.co.jp"
 #  - git config --global user.name "hs-yoshida"
-  - git clone git@github.com:testEnvOrganization/connection.git --recursive --depth=1
-  - git branch -a
-  - git checkout origin/develop
+#  - git clone git@github.com:testEnvOrganization/connection.git --recursive --depth=1
+#  - git branch -a
+#  - git checkout origin/develop
   - git fetch git@github.com:testEnvOrganization/connection.git
   - git checkout develop
   - git branch -a

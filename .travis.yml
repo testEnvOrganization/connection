@@ -10,9 +10,10 @@ before_install:
   - mv github_deploy_key ~/.ssh/
   - chmod 600 ~/.ssh/github_deploy_key
   - eval $(ssh-agent -s)
-#  - ssh-keygen -R github.com
-  - ssh-add ~/.ssh/github_deploy_key
+  - ssh-keygen -R github.com
+#  - ssh-add ~/.ssh/github_deploy_key
   - ls -la ~/.ssh/
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - chmod 600 ~/.ssh/config
   - ls -la ~/.ssh/
   - ssh github.com 

@@ -9,7 +9,7 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_b291a2cbdf5e_key -iv $encrypted_b291a2cbdf5e_iv -in github_deploy_key.enc -out github_deploy_key -md md5
   - mv github_deploy_key ~/.ssh/
   - chmod 600 ~/.ssh/github_deploy_key
-  - eval $(ssh-agent -s)A
+  - eval $(ssh-agent -s)
   - ssh -o 'StrictHostKeyChecking no' github.com
 #  - ssh-keygen -R github.com
 #  - ssh-add ~/.ssh/github_deploy_key

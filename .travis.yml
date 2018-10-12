@@ -13,7 +13,7 @@ before_install:
   - ssh-keygen -R github.com
 #  - ssh-add ~/.ssh/github_deploy_key
   - ls -la ~/.ssh/
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host github.com,192.30.253.113\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
   - chmod 600 ~/.ssh/config
   - ls -la ~/.ssh/
   - ssh github.com 

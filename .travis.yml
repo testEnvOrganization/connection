@@ -6,41 +6,37 @@ jdk:
 env:
   - URL=https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.1
 before_script:
-  - openssl aes-256-cbc -K $encrypted_b291a2cbdf5e_key -iv $encrypted_b291a2cbdf5e_iv -in github_deploy_key.enc -out id_rsa -md md5
-  - mv id_rsa ~/.ssh/
-  - eval $(ssh-agent -s)
-  - ssh-keygen -R github.com
-  - ls -la ~/.ssh/
-  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config 
-  - chmod 600 ~/.ssh/id_rsa
+  - ls -la
+  - eval `ssh-agent -s`
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - chmod 600 ~/.ssh/config
-  - ls -la ~/.ssh/
-  - ssh github.com 
-#  - cat ~/.ssh/config
-#  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-#  - pbcopy < ~/.ssh/github_deploy_key
-#  - cat ~/.ssh/config
-#  - cat ~/.ssh/known_hosts
-#  - git config --global user.email "hirofumi-yoshida@science.co.jp"
-#  - git config --global user.name "hs-yoshida"
-#  - git clone git@github.com:testEnvOrganization/connection.git --recursive --depth=1
-#  - git branch -a
-#  - git checkout origin/develop
-#  - git fetch git@github.com:testEnvOrganization/connection.git
-#  - yes
-#  - git checkout develop
-#  - git branch -a
+  - openssl aes-256-cbc -K $encrypted_b291a2cbdf5e_key -iv $encrypted_b291a2cbdf5e_iv -in travis_key.enc -out travis_key -d
+  - cp travis_key ~/.ssh/
+  - chmod 600 ~/.ssh/travis_key
+  - ssh-add ~/.ssh/travis_key
 install:
   - wget $URL/redpen-1.10.1.tar.gz
   - tar xvf redpen-1.10.1.tar.gz
   - export PATH=$PATH:$PWD/redpen-distribution-1.10.1/bin
 script:
+  - git fetch git@github.com:testEnvOrganization/connection.git
+  - git branch -a
+  - git checkout master
+  - rm -f travis_key
   - redpen -f asciidoc source/*.adoc
 after_success:
+  - echo success.
   - git fetch git@github.com:testEnvOrganization/connection.git
-  - git status
-  - git add --all
-  - git commit -a -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)"
-  - git push git@github.com:testEnvOrganization/connection.git gh-pages --force
+  - git checkout -b gh-pages
+  - rm -f travis_key
+after_failure:
+  - echo failed.
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
 notifications:
   slack: humanscience-ds:bKpIKhcfWAAAugmKF5t7AF4B

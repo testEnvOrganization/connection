@@ -29,8 +29,8 @@ after_success:
   - git fetch git@github.com:testEnvOrganization/connection.git
   - git checkout -b gh-pages
   - rm -f travis_key
-after_failure:
-  - echo failed.
+#after_failure:
+#  - echo failed.
 deploy:
   provider: pages
   skip-cleanup: true

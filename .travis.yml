@@ -1,0 +1,43 @@
+language: ruby
+rvm:
+- 2.3.3
+jdk:
+- oraclejdk8
+env:
+  - URL=https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.1
+before_script:
+  - ls -la
+  - eval `ssh-agent -s`
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - chmod 600 ~/.ssh/config
+  - openssl aes-256-cbc -K $encrypted_b291a2cbdf5e_key -iv $encrypted_b291a2cbdf5e_iv -in travis_key.enc -out travis_key -d
+  - cp travis_key ~/.ssh/
+  - chmod 600 ~/.ssh/travis_key
+  - ssh-add ~/.ssh/travis_key
+install:
+  - wget $URL/redpen-1.10.1.tar.gz
+  - tar xvf redpen-1.10.1.tar.gz
+  - export PATH=$PATH:$PWD/redpen-distribution-1.10.1/bin
+script:
+  - git fetch git@github.com:testEnvOrganization/connection.git
+  - git branch -a
+  - git checkout master
+  - rm -f travis_key
+  - echo hoge > hoge.txt
+#  - redpen -f asciidoc source/*.adoc
+after_success:
+  - echo success.
+  - git fetch git@github.com:testEnvOrganization/connection.git
+  - git checkout -b gh-pages
+  - rm -f travis_key
+#after_failure:
+#  - echo failed.
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+notifications:
+  slack: humanscience-ds:bKpIKhcfWAAAugmKF5t7AF4B

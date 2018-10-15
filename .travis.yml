@@ -23,7 +23,7 @@ script:
   - git branch -a
   - git checkout master
   - rm -f travis_key
-  - make check
+  - echo hoge > hoge.txt
 #  - redpen -f asciidoc source/*.adoc
 after_success:
   - echo success.

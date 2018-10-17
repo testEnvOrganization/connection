@@ -24,7 +24,7 @@ script:
   - git checkout master
   - rm -f travis_key
   - echo hoge > hoge.txt
-  - redpen -f asciidoc source/*.adoc
+  - redpen -f asciidoc -r json -l 10000 source/*.adoc
 after_success:
   - echo success.
   - git fetch git@github.com:testEnvOrganization/connection.git

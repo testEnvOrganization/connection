@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+  $(function() {
+    $.getJSON("result.json" , function(data) {
+      var
+        ulObj = $("#result").children('tbody');
+        array = data[0].errors;
+        len = array.length;
+      //ulObj.append($('<tbody>'));
+      //ulObj.append($('<tr>'));
+      for(var i = 0; i < len; i++) {
+        ulObj.append($('<tr/>').append($('<th scope="row">').text(array[i].lineNum + '行目')).append($('<td/>').text(array[i].level)).append($("<td/>").text(array[i].sentence)).append($("<td/>").attr({"level":array[i].level}).attr({ "lineNum": array[i].lineNum }).text(array[i].message)));
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  <div class="table-responsive">
+    <table id="result" class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">行数</th>
+          <th scope="col">エラーレベル</th>
+          <th scope="col">エラー箇所</th>
+          <th scope="col">エラーが含まれる文章</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

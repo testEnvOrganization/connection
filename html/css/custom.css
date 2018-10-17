@@ -72,3 +72,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 1rem 0;
   font-size: 2rem;
 }
+
+/* line 13, ../../sass/custom.scss */
+.container.inner {
+  padding: 1rem;
+}

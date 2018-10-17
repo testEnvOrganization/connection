@@ -22,6 +22,10 @@ script:
   - git fetch git@github.com:testEnvOrganization/connection.git
   - git branch -a
   - git checkout master
+  - cp -fp redpen_source/bin/* redpen-distribution-1.10.1/bin/
+  - cp -fp redpen_source/conf/* redpen-distribution-1.10.1/conf/
+  - cp -fp redpen_source/js/* redpen-distribution-1.10.1/js/
+  - cp -fp redpen_source/lib/* redpen-distribution-1.10.1/lib/
   - redpen -f asciidoc -r json -l 10000 source/*.adoc > result.json
 after_success:
   - echo success.

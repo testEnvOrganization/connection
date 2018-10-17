@@ -3,3 +3,4 @@ redpen-distribution*
 travis_key
 commit_push.bat
 fetch_pull.bat
+html/*

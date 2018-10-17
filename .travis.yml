@@ -22,13 +22,13 @@ script:
   - git fetch git@github.com:testEnvOrganization/connection.git
   - git branch -a
   - git checkout master
-  - rm -f travis_key
   - redpen -f asciidoc -r json -l 10000 source/*.adoc > result.json
 after_success:
   - echo success.
   - git fetch git@github.com:testEnvOrganization/connection.git
   - git checkout -b gh-pages
   - rm -f travis_key
+  - rm -rf redpen-*
 #after_failure:
 #  - echo failed.
 deploy:

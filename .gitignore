@@ -1,3 +1,5 @@
 redpen-1.10.1.tar.gz
 redpen-distribution*
 travis_key
+commit_push.bat
+fetch_pull.bat

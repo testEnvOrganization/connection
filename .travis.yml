@@ -28,7 +28,7 @@ script:
   - ls -la redpen_source/conf/
   - ls -la redpen-distribution-1.10.1/js/
   - ls -la redpen_source/js/
-    - ls -la redpen-distribution-1.10.1/lib/
+  - ls -la redpen-distribution-1.10.1/lib/
   - ls -la redpen_source/lib/
 #  - cp -fp redpen_source/bin/* redpen-distribution-1.10.1/bin/
 #  - cp -fp redpen_source/conf/* redpen-distribution-1.10.1/conf/

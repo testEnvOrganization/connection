@@ -30,10 +30,17 @@ script:
 #  - ls -la redpen_source/js/
   - ls -la redpen-distribution-1.10.1/lib/
 #  - ls -la redpen_source/lib/
-  - cp -f -p redpen_source/bin/* redpen-distribution-1.10.1/bin/
-  - cp -f -p redpen_source/conf/* redpen-distribution-1.10.1/conf/
-  - cp -f -p redpen_source/js/* redpen-distribution-1.10.1/js/
-  - cp -f -p redpen_source/lib/* redpen-distribution-1.10.1/lib/
+  - cp -f redpen_source/bin/* redpen-distribution-1.10.1/bin/
+  - cp -f redpen_source/conf/* redpen-distribution-1.10.1/conf/
+  - cp -f redpen_source/js/* redpen-distribution-1.10.1/js/
+  - cp -f redpen_source/lib/* redpen-distribution-1.10.1/lib/
+  - chmod 755 redpen_source/bin/redpen
+  - chmod 755 redpen_source/bin/redpen.bat
+  - chmod 644 redpen_source/conf/js.xml
+  - chmod 644 redpen_source/conf/logback.xml
+  - chmod 644 redpen_source/conf/redpen-conf-en.xml
+  - chmod 644 redpen_source/conf/redpen-conf-ja.xml
+  - chmod 644 redpen_source/conf/redpen-conf-plugin.xml
   - ls -la redpen-distribution-1.10.1/bin/
   - ls -la redpen-distribution-1.10.1/conf/
   - ls -la redpen-distribution-1.10.1/js/

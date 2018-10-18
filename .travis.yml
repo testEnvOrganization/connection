@@ -39,7 +39,7 @@ script:
   - ls -la redpen-distribution-1.10.1/conf/
   - ls -la redpen-distribution-1.10.1/js/
   - ls -la redpen-distribution-1.10.1/lib/
-  - redpen -f asciidoc -r json -l 10000 -L ja source/*.adoc > result.json
+  - redpen -f asciidoc -r json -l 10000 -L 'ja' source/*.adoc > result.json
 after_success:
   - echo success.
   - git fetch git@github.com:testEnvOrganization/connection.git

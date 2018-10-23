@@ -27,7 +27,7 @@ after_success:
 - git fetch git@github.com:testEnvOrganization/connection.git
 - git checkout -b gh-pages
 - rm -f travis_key
-- rm -rf redpen-*
+- rm -rf redpen-1.10.1.tar.gz
 deploy:
   provider: pages
   skip-cleanup: true

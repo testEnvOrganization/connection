@@ -9,3 +9,4 @@ html/css/ie.css
 html/css/print.css
 sass
 sass/*
+config.rb
